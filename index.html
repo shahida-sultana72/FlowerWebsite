@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Foody Uoody </title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Navigation Bar -->
+  <nav class="navbar">
+    <div class="container">
+      <a href="#" class="logo">FOODY UOODY</a>
+      <ul class="nav-links">
+        <li class="active"><a href="#home">Home</a></li>
+        <li><a href="#menu">Menu</a></li>
+        <li><a href="#contact">Contact</a></li>
+        <li><a href="#cart">Cart (<span id="cart-count">0</span>)</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <header id="home" class="hero">
+    <div class="hero-images">
+      <div class="hero-slide active">
+        <img src="images/welcome page.png" alt="Image 1">
+      </div>
+      <!-- <div class="hero-slide">
+        <img src="images/lava cake.jpg" alt="Image 2">
+      </div>
+      <div class="hero-slide">
+        <img src="images/pink pasta.jpg" alt="Image 3">
+      </div>
+    </div>
+    <button class="hero-btn prev" onclick="prevHeroSlide()">&#10094;</button>
+    <button class="hero-btn next" onclick="nextHeroSlide()">&#10095;</button> -->
+  </header>
+
+  <!-- Menu Section -->
+  <section id="menu" class="menu-section">
+    <div class="container">
+      <h2 class="section-title">Our Menu</h2>
+      <div class="dish-slider">
+        <div class="slide">
+          <img src="images/pink pasta.jpg" alt="pink pasta">
+          <h3>Pink Pasta</h3>
+            <p> Our signature dish, made with love and care.</p>
+            <p class="price">250 BDT</p>
+          <button class="add-to-cart-btn"> place oder</button>
+        </div>
+        <div class="slide">
+          <img src="images/garlic pasta.jpg" alt="Garlic pasta">
+          <h3>Garlic Sauce pasta</h3>
+          <p>Here the spice fusion food of foody</p>
+          <p class="price">120 BDT</p>
+          <button class="add-to-cart-btn">place order</button>
+        </div>
+
+        
+        <div class="slide">
+          <img src="images/vagetable momo.jpg" alt="Vegetable momo">
+          <h3>Chicken Momo</h3>
+          <p>Soft, syrupy dumplings made from cottage chikchen.</p>
+          <p class="price">180 BDT</p>
+          <button class="add-to-cart-btn">place order</button>
+        </div>
+        <div class="slide">
+          <img src="images/chicken momo.jpg" alt="Chicken momo">
+          <h3>Creamy Chicken Momo with soup</h3>
+          <p>Steamed dumpling with a savory filling.</p>
+          <p class="price">200 BDT</p>
+          <button class="add-to-cart-btn">place order </button>
+        </div>
+        <div class="slide">
+          <img src="images/creamy momo.jpg" alt="creamy momo">
+          <h3>Creamy momo </h3>
+          <p>Steamed dumpling with a savory filling in creamy soup.</p>
+          <p class="price">220 BDT</p>
+          <button class="add-to-cart-btn">place order </button>
+        </div>
+        <div class="slide">
+          <img src="images/chocolate cake.jpg" alt="Choclate cake">
+          <h3>Choclate Cake </h3>
+          <p>chocolate with barry flavoufull</p>
+          <p class="price">200 BDT</p>
+          <button class="add-to-cart-btn">place order </button>
+        </div>
+
+
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Cart Section -->
+<section id="cart" class="cart-section">
+  <div class="container">
+    <header class="header">
+      <h1>Please place your order</h1>
+    </header>
+
+    <main>
+      <!-- Product Selection Section -->
+      <section class="product-selection card">
+        <h2>Select Your Foods</h2>
+        <label for="productList">Choose a product:</label>
+        <select id="productList">
+          <option value="">Select a Product</option>
+          <option data-price="250" data-name="pink Pasta">
+            pink sauce pasta - 250 BDT
+          </option>
+          <option data-price="120" data-name="Garlic sauce pasta">
+            Galic sauce pasta - 120 BDT
+          </option>
+          <option data-price="180" data-name="Chicken Momo">
+            chikchen momo - 180 BDT
+          </option>
+          <option data-price="200" data-name="vagetable Momo">
+            Vegetable momo - 200 BDT
+          </option>
+          <option data-price="160" data-name="soupy chikchen momo">
+            chicken soup momo- 160 BDT
+          </option>
+        </select>
+        <div class="add-product">
+          <input
+            type="number"
+            id="productQuantity"
+            min="1"
+            value="1"
+            placeholder="Quantity"
+          />
+          <button id="addToCartBtn">Add to Cart</button>
+        </div>
+      </section>
+
+      <!-- Cart Section -->
+      <section class="cart-section card">
+        <h2>Shopping Cart 🛒</h2>
+        <table id="cartTable">
+          <thead>
+            <tr>
+              <th>Product</th>
+              <th>Price</th>
+              <th>Quantity</th>
+              <th>Total</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody id="cartItems"></tbody>
+        </table>
+        <p id="emptyCartMessage">Your cart is empty</p>
+      </section>
+
+      <!-- Delivery Options -->
+      <section class="delivery-options card">
+        <h2>Delivery Options 🚚</h2>
+        <label for="deliveryLocation">Select location:</label>
+        <select id="deliveryLocation">
+          <option value="60">Inside Dhaka (60 BDT)</option>
+          <option value="120">Outside Dhaka (120 BDT)</option>
+        </select>
+      </section>
+
+      <!-- Price Breakdown -->
+      <section
+        id="priceBreakdown"
+        class="price-breakdown card"
+        style="display: none"
+      >
+        <h2>Price Details 💰</h2>
+        <p>Subtotal: <span id="subtotalDisplay">0 BDT</span></p>
+        <p>Tax (15%): <span id="taxDisplay">0 BDT</span></p>
+        <p>Delivery Fee: <span id="deliveryDisplay">0 BDT</span></p>
+        <p id="discountRow" style="display: none">
+          Discount: <span id="discountDisplay">0 BDT</span>
+        </p>
+        <h3>Total: <span id="totalPriceDisplay">0 BDT</span></h3>
+      </section>
+
+      <!-- Confirm Order -->
+      <button id="confirmOrder" disabled class="confirm-btn">
+        Confirm Order
+      </button>
+    </main>
+  </div>
+</section>
+
+
+  <!-- Contact Section -->
+  <section id="contact" class="contact-section">
+    <div class="container">
+      <h2 class="section-title">Contact Us</h2>
+      <form id="contactForm">
+        <div class="form-group">
+          <label for="name">Name</label>
+          <input type="text" id="name" placeholder="Your Name" required>
+        </div>
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input type="email" id="email" placeholder="Your Email" required>
+        </div>
+        <div class="form-group">
+          <label for="message">Message</label>
+          <textarea id="message" placeholder="Your Message" required></textarea>
+        </div>
+        <button type="submit" class="submit-btn">Send Message</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <div class="footer-section contact"> 
+    <h2>Found Us</h2>
+   <p><i class="fas fa-map-marker-alt"></i> 123 Food Street, Dhaka, Bangladesh</p>
+   <p><i class="fas fa-phone"></i> +880 123-456-789</p>
+  <p><i class="fas fa-envelope"></i> info@restaurant.com</p>
+ </div>
+ </div> 
+  <div class="footer-bottom"> &copy; 2024 Foody Woody | Designed by Team Flowers</div>
+  <script src="script.js"></script>
+</body>
+</html>
